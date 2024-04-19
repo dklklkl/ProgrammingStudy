@@ -1,41 +1,25 @@
-﻿//1.코딩 규칙 연습
-//내용
+﻿//2. 자료형 연습
 
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!"); //한 줄 주석 : Ctrl + K + C
-Console.WriteLine("Hello, World!"); //한 줄 주석 해제 : Ctrl + K + U
-Console.WriteLine("Hello, World!"); //영역 주석 : Ctrl + Shift +/ (주석 해제 동일)
+//변수 선언
+//자료형(int) 변수명(number) =(대입연산자) 값(10)
+using System;
 
-//변수의 이름은 명사, be+형용사
-int countNumber = 0; //camelCase : 변수, 중간 앞글자 대문자
-int a = 10; //(나쁜 예)변수의 의미 //주석은 최대한 없는 게 좋음
-int totalNumber = 10;
-bool isActive = true;
+byte byteA = 0xFF;          //정수형 값을 저장, 8bit
+short shortA = 0xFF;        //정수형 값을 저장, 16bit
+int number = 10;            //정수형 값을 저장, 32bit
+float pi = 3.141592f;       //실수형 값을 저장, 32bit, f를 통해 실수임을 표현(float에서만)
+double pi2 = 3.14159265359; //실수형 값을 저장, 32bit, f필요없음
+char character = 'a';       //문자형 값을 저장, 16bit
+string name = "짱구";       //문자가변형, 여러 문자형 저장
+bool isMoving = false;      //부울형, 8bit, 0(false)또는1(true)만 반환
 
-//함수의 이름은 동사
-//함수(function) : 클래스 외에 사용시
-//메서드(method) : 클래스 내부에서 사용시
-void Move()
-{
+//콘솔에 출력
+Console.WriteLine(byteA);
+Console.WriteLine(shortA);
+Console.WriteLine(number);
+Console.WriteLine(pi);
+Console.WriteLine(pi2);
+Console.WriteLine(character); //한줄복사 : Ctrl + D
+Console.WriteLine(name); //한줄복사 : Ctrl + D
+Console.WriteLine(isMoving); //한줄복사 : Ctrl + D
 
-}
-
-void LoopSystem() //PascalCase : 함수, 앞글자마다 대문자
-{
-    
-}
-
-if(countNumber == 0) //괄호같은 거 tab 누르면 자동입력
-{
-    //tab : 들여쓰기, shift + tab : 들여쓰기 없어짐
-
-    for(int i = 0; i < a; i++)
-    {
-        countNumber++;
-    }
-
-    for (int i=0; i < totalNumber; i++)
-    {
-        countNumber++; 
-    }
-}
