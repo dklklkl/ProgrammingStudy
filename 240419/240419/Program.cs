@@ -1,86 +1,137 @@
-﻿//4. 컬렉션 연습
+﻿//5.컬렉션 연습2
 
-//배열 : 고정형
-string[] names = { "짱구", "짱아", "철수" };
+/*Stack<int> numbers = new Stack<int>();
+numbers.Push(10); //값을 쌓아 올린다.
+numbers.Push(100);
+numbers.Push(1000);
 
-//리스트 : 가변형
-List<string> names2 = new List<string>()
+foreach (int number in numbers)
 {
-    "짱구",
-    "짱아",
-    "철수"
-};
-
-Console.WriteLine(names[0]);
-Console.WriteLine(names2[0]);
-names2.Add("훈이");
-Console.WriteLine(names2[3]);
-
-for(int i = 0; i < names.Length; i++)
-{
-    Console.WriteLine(names[i]);
+    Console.WriteLine(number);
 }
 
-for(int i = 0;i < names2.Count; i++)
+Console.WriteLine("-----------");
+
+int peekNumber = numbers.Peek();
+Console.WriteLine(peekNumber);
+
+bool isExist = numbers.Contains(100);
+if (isExist)
+    Console.WriteLine("100이 존재합니다.");
+
+int value = numbers.Pop(); //쌓아 올린 값을 순서대로 꺼낸다.
+Console.WriteLine(value);
+
+value = numbers.Pop(); //쌓아 올린 값을 순서대로 꺼낸다.
+Console.WriteLine(value);
+
+value = numbers.Pop(); //쌓아 올린 값을 순서대로 꺼낸다.
+Console.WriteLine(value);*/
+
+/*실습1. 작업(파워포인트)를 되돌리기 상태로 만들어주는 예제
+//1. 특정 횟수만큼 파워포인트 각 작업을 반복해서 넣고(ReadLine)
+//2. (넣는 과정이 끝나면) 1번 입력(되돌리기 버튼)을 누를 경우, 되돌리기 작업의 이름을 출력
+//3. 되돌리기 작업과 현재 진행된 작업의 이름을 stack에 쌓인 순서대로 출력
+//menu>graph>x-setting>y-setting>insert>change x-setting>change y-setting>delete
+
+Console.WriteLine("-----------");
+
+Stack<string> works = new Stack<string>();
+works.Push("menu");
+works.Push("graph");
+works.Push("x-setting");
+works.Push("y-setting");
+works.Push("insert");
+works.Push("change x-setting");
+works.Push("change y-setting");
+works.Push("delete");
+
+foreach (string work in works)
 {
-    Console.WriteLine(names2[i]);
+    Console.WriteLine(work);
 }
 
-//리스트에서 이름 찾기
-int index = names2.IndexOf("철수");
-Console.WriteLine("철수는 " + index + "번째에 있습니다.");
+Console.WriteLine("-----------");
 
-//존재여부확인
-bool isExsist = names2.Contains("짱구");
-if(isExsist)
+Console.WriteLine("명령을 입력하세요.");
+
+string input = Console.ReadLine();
+
+if (input == "1")
 {
-    Console.WriteLine("존재합니다."); //한줄일 때는 중괄호 없어도 됨
+    string undoValue = works.Pop();
+    Console.WriteLine(undoValue);
+
+    Console.WriteLine("-----------");
+
+    foreach (string work in works)
+    {
+        Console.WriteLine(work);
+    }
+}*/
+
+/*Console.WriteLine("-----------");
+
+Queue<string> waitingPeople = new Queue<string>();
+waitingPeople.Enqueue("짱구");
+waitingPeople.Enqueue("철수");
+waitingPeople.Enqueue("맹구");
+
+foreach (string people in waitingPeople)
+{
+    Console.WriteLine(people);
 }
 
-//리스트를 정렬
-names2.Sort();
-for(int i = 0; i < names2.Count(); i++)
+string name = waitingPeople.Dequeue();
+Console.WriteLine(name);
+
+name = waitingPeople.Dequeue();
+Console.WriteLine(name);
+
+name = waitingPeople.Dequeue();
+Console.WriteLine(name);*/
+
+/*실습2 - Queue
+ * 도서관 대출자 대기열
+ * 1. 대출자 대기열에 맞춰 대출자의 이름과 도서의 이름을 대기열에 등록
+ * 2. 도서관 직원이 대기열에 맞춰 대출목록에 업데이트
+ * 
+ * 입출력 예시
+ * "대출자 이름을 입력해주세요."
+ * 짱구
+ * "도서 권수를 입력해주세요."
+ * 2
+ * "대출을 위한 도서 목록을 입력해주세요."
+ * 퓨처셀프
+ * "대출을 위한 도서 목록을 입력해주세요."
+ * 삼국지
+ * 
+ * "Queue에 들어갈 내용 -> 이름 : 짱구 \n 도서1 : 퓨처셀프 \n 도서2 : 삼국지
+ * 
+ * "도서가 등록되었습니다."
+ * 이름 : 짱구
+ * 도서1 : 퓨처셀프
+ * 도서2 : 삼국지
+ */
+
+Queue<string> libraryQueue = new Queue<string>();
+string totalinfo = "";
+
+Console.WriteLine("대출자 이름을 입력해주세요.");
+string name = Console.ReadLine();
+Console.WriteLine("도서 권수를 입력해주세요.");
+string booknumber = Console.ReadLine();
+int count = int.Parse(booknumber);
+
+totalinfo = name + "\n" + count + "\n";
+
+for (int i = 0; i < count; i++)
 {
-    Console.WriteLine(names2[i]);
+    Console.WriteLine("도서 목록을 입력해주세요.");
+    string bookname = Console.ReadLine();
+    totalinfo += bookname + "\n";
 }
 
-//딕셔너리: "example"(key), 5번째(value)
-Dictionary<string, int> dictionary = new Dictionary<string, int>();
-dictionary.Add("book", 0);
-dictionary.Add("computer", 1);
-dictionary.Add("mouse", 2);
-
-index = dictionary["mouse"];
-Console.WriteLine("mouse는 " + index + "번째에 있습니다.");
-bool isContaing = dictionary.ContainsKey("book");
-
-if(isContaing)
-    Console.WriteLine("book이 존재합니다.");
-
-//실습2 : 도서관 검색 서비스
-// 1. 도서관에 가로3, 세로2의 책꽂이가 있다.
-//미리 책꽂이에 책들을 꽂아놓은 상태
-// 2. 특정 책의 이름을 입력받아 책의 일련번호(위치)를 출력하는 책꽂이 시스템 제작
-
-//예시
-//도서의 이름을 입력해주세요.
-//_
-//도서의 위치는 (2,1)입니다.
-
-//버튼을 눌러주세요. 등록(0), 검색(1), 제거(2)
-
-
-Dictionary<string, string> bookShelf = new Dictionary<string, string>();
-bookShelf.Add("짱구", "0,0");
-bookShelf.Add("철수", "0,1");
-bookShelf.Add("맹구", "0,2");
-bookShelf.Add("훈이", "1,0");
-bookShelf.Add("유리", "1,1");
-bookShelf.Add("짱아", "1,2");
-
-
-Console.WriteLine("도서의 이름을 입력해주세요.");
-string bookName = Console.ReadLine();
-string location = bookShelf[bookName];
-Console.WriteLine("도서의 위치는 " + location + "입니다.");
-
+Console.WriteLine("입력된 내용은 아래와 같습니다.");
+Console.WriteLine(totalinfo);
+libraryQueue.Enqueue(totalinfo);
